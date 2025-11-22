@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Aethera: Anti-Plastic Campaign Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ocean-blue': '#1e90ff',
+                        'sea-green': '#3cb371',
+                        'coral-red': '#ff6347',
+                        'wave-light': '#f0f8ff',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url("Microproject\ Background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .page-content {
+            min-height: calc(100vh - 80px); 
+            padding-top: 80px;
+        }
+        .nav-link {
+            transition: color 0.3s ease, background-color 0.3s ease;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 3px;
+            background-color: #ff6347; /* Coral Red hover line */
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #ff6347; 
+        }
+        
+        .btn-primary {
+            @apply px-6 py-3 bg-ocean-blue text-white font-bold rounded-full shadow-lg hover:bg-sea-green transition duration-300 transform hover:scale-105;
+        }
+        .page-transition {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .page-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-2xl font-extrabold text-ocean-blue tracking-wide">
+                Aethera Portal
+            </div>
+            <div id="nav-menu" class="hidden sm:flex space-x-6 text-lg font-medium">
+                <a href="#" data-page="home" class="nav-link active" onclick="navigateTo('home')">Home</a>
+                <a href="#" data-page="about" class="nav-link" onclick="navigateTo('about')">About SDG</a>
+                <a href="#" data-page="resources" class="nav-link" onclick="navigateTo('resources')">Resources</a>
+                <a href="#" data-page="gallery" class="nav-link" onclick="navigateTo('gallery')">Gallery</a>
+                <a href="#" data-page="contact" class="nav-link" onclick="navigateTo('contact')">Contact</a>
+            </div>
+            
+            <button class="sm:hidden text-2xl text-ocean-blue" onclick="toggleMobileMenu()">
+                &#9776;
+            </button>
+        </nav>
+        
+        <div id="mobile-menu" class="hidden sm:hidden bg-white shadow-xl px-4 pb-2">
+            <a href="#" data-page="home" class="block py-2 text-ocean-blue font-medium border-b" onclick="navigateTo('home')">Home</a>
+            <a href="#" data-page="about" class="block py-2 text-gray-700 border-b" onclick="navigateTo('about')">About SDG</a>
+            <a href="#" data-page="resources" class="block py-2 text-gray-700 border-b" onclick="navigateTo('resources')">Resources</a>
+            <a href="#" data-page="gallery" class="block py-2 text-gray-700 border-b" onclick="navigateTo('gallery')">Gallery</a>
+            <a href="#" data-page="contact" class="block py-2 text-gray-700" onclick="navigateTo('contact')">Contact</a>
+        </div>
+    </header>
+
+    <main class="page-content container mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+
+        <!-- 1. HOME PAGE (Introduction of theme, banner, highlights) -->
+        <section id="page-home" class="page-transition page-active pt-10">
+            <div class="text-center bg-white p-8 rounded-xl shadow-2xl mb-12 border-b-4 border-ocean-blue">
+                
+                <div class="relative overflow-hidden rounded-xl h-64 md:h-96 bg-cover bg-center mb-6"
+                    style="background-image: url(Microproject.webp);">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center p-4">
+                        <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4 leading-tight">
+                            Tide Turners: Stop the Plastic Wave
+                        </h1>
+                        <p class="text-lg sm:text-xl text-wave-light max-w-2xl">
+                            Our planet is choking on plastic. Join the movement to protect our oceans, wildlife, and future.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl font-bold text-coral-red mb-6 mt-8"><u>Campaign Highlights</u></h2>
+                <p> Policy & Bans: Successful legislative bans on single-use plastic items (bags, cutlery, straws) implemented across numerous countries and states.
+                    <br>
+                    Behavior Change: Significant increase in public awareness leading to measurable shifts in consumer habits, such as greater adoption of reusable bags/bottles and participation in challenges like "Plastic Free July."
+                    <br>
+                    Corporate Accountability: Extended Producer Responsibility (EPR) mechanisms established, requiring companies to manage the end-of-life recycling/disposal of the plastic packaging they produce.</p>
+                    <br>
+                <!-- Highlights Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-6 bg-wave-light rounded-xl shadow-lg border-t-4 border-sea-green">
+                        <span class="text-4xl block mb-3">🐠</span>
+                        <h3 class="font-bold text-xl mb-2">Protect Marine Life</h3>
+                        <p class="text-gray-600">Plastic debris kills millions of sea creatures annually. Our goal is zero-plastic contamination.</p>
+                    </div>
+                    <div class="p-6 bg-wave-light rounded-xl shadow-lg border-t-4 border-sea-green">
+                        <span class="text-4xl block mb-3">🔄</span>
+                        <h3 class="font-bold text-xl mb-2">Embrace Circularity</h3>
+                        <p class="text-gray-600">Promoting reuse, refill, and sustainable consumption habits globally.</p>
+                    </div>
+                    <div class="p-6 bg-wave-light rounded-xl shadow-lg border-t-4 border-sea-green">
+                        <span class="text-4xl block mb-3">🛠️</span>
+                        <h3 class="font-bold text-xl mb-2">Tools & Education</h3>
+                        <p class="text-gray-600">Providing actionable steps, resources, and policy guides for change makers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ABOUT SDG PAGE (SDG 14: Life Below Water) -->
+        <section id="page-about" class="page-transition hidden pt-10">
+            <div class="bg-white p-8 rounded-xl shadow-2xl">
+                <h2 class="text-4xl font-extrabold text-ocean-blue mb-6 border-b pb-2">
+                    <u>About SDG 14: Life Below Water</u>
+                </h2>
+                <div class="md:flex gap-8 items-start">
+                    <div class="md:w-2/3">
+                        <p class="text-lg mb-4 leading-relaxed">
+                            Sustainable Development Goal 14 (SDG 14) aims to conserve and sustainably use the oceans, seas and marine resources for sustainable development. Plastic pollution poses one of the most significant threats to achieving this goal, contaminating marine ecosystems from surface waters to the deep sea.
+                        </p>
+                        <h3 class="text-2xl font-bold text-sea-green mt-6 mb-4"><u>The Global Plastic Crisis: Statistics</u></h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                            <li><strong class="text-coral-red">11 Million Tons:</strong> The amount of plastic waste that enters the oceans annually.</li>
+                            <li><strong class="text-coral-red">5.2 Trillion:</strong> Estimated pieces of plastic in the ocean, with 4 billion plastic microfibers per square kilometer blanketing the deep sea.</li>
+                            <li><strong class="text-coral-red">90% of Seabirds:</strong> Are estimated to have plastic fragments in their stomach.</li>
+                            <li><strong class="text-coral-red">2050 Forecast:</strong> Plastic in the oceans could outweigh all fish unless action is taken.</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-bold text-sea-green mt-8 mb-4"><u>Purpose: Why We Must Act</u></h3>
+                        <p class="mb-4">
+                            The purpose of the Aethera campaign aligns with SDG 14's targets to significantly reduce marine pollution of all kinds, in particular from land-based activities, including marine debris and nutrient pollution, by 2025. This requires collective awareness and systemic change.
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 mt-6 md:mt-0 p-6 bg-wave-light rounded-xl border-l-4 border-coral-red text-center">
+                        <div class="text-6xl mb-3">
+                            <span role="img" aria-label="Ocean Wave"><img src="SDG_14.png"></span>
+                        </div>
+                        <p class="font-semibold text-lg text-gray-800">
+                            "A single-use plastic item has an average usage time of 12 minutes, but it pollutes for hundreds of years."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. FEATURES / RESOURCES PAGE (Tips, tools, resources, awareness info) -->
+        <section id="page-resources" class="page-transition hidden pt-10">
+            <div class="bg-white p-8 rounded-xl shadow-2xl">
+                <h2 class="text-4xl font-extrabold text-ocean-blue mb-8 border-b pb-2 text-center">
+                    <u>Your Zero-Waste Toolkit</u>
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Resource 1: The 5 R's -->
+                    <div class="p-6 bg-wave-light rounded-xl shadow-lg border-t-4 border-coral-red transition duration-300 hover:shadow-xl">
+                        <h3 class="text-2xl font-bold text-coral-red mb-3"><u>1. The 5 R's Philosophy</u></h3>
+                        <ul class="space-y-2 font-medium text-gray-700">
+                            <li class="flex items-center"><span class="text-sea-green mr-2 font-extrabold">1. Refuse:</span> Say no to single-use plastics you don't need.</li>
+                            <li class="flex items-center"><span class="text-sea-green mr-2 font-extrabold">2. Reduce:</span> Minimize consumption overall.</li>
+                            <li class="flex items-center"><span class="text-sea-green mr-2 font-extrabold">3. Reuse:</span> Find new purposes for existing items.</li>
+                            <li class="flex items-center"><span class="text-sea-green mr-2 font-extrabold">4. Repurpose:</span> Creative reuse beyond the item's original function.</li>
+                            <li class="flex items-center"><span class="text-sea-green mr-2 font-extrabold">5. Recycle:</span> As a last resort, utilize local recycling programs.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Resource 2: DIY Alternatives -->
+                    <div class="p-6 bg-wave-light rounded-xl shadow-lg border-t-4 border-ocean-blue transition duration-300 hover:shadow-xl">
+                        <h3 class="text-2xl font-bold text-ocean-blue mb-3"><u>2. DIY Sustainable Swaps</u></h3>
+                        <p class="mb-3 text-gray-600">Practical alternatives to common plastic items:</p>
+                        <ul class="list-disc list-inside text-gray-700 ml-4">
+                            <li>Replace plastic wrap with reusable beeswax food wraps.</li>
+                            <li>Use solid soap and shampoo bars instead of bottled products.</li>
+                            <li>Carry a reusable water bottle and coffee cup everywhere.</li>
+                            <li>Switch to bamboo toothbrushes and floss.</li>
+                            <li>Make your own cleaning spray with vinegar and water.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Resource 3: Educational Tools -->
+                    <div class="p-6 bg-wave-light rounded-xl shadow-lg border-t-4 border-sea-green transition duration-300 hover:shadow-xl">
+                        <h3 class="text-2xl font-bold text-sea-green mb-3"><u>3. Awareness & Tools</u></h3>
+                        <p class="mb-3 text-gray-600">Key educational resources and apps:</p>
+                        <ul class="list-disc list-inside text-gray-700 ml-4">
+                            <li><strong class="font-semibold">Documentaries:</strong> "A Plastic Ocean," "Seaspiracy" (for awareness).</li>
+                            <li><strong class="font-semibold">Cleanup Maps:</strong> Find local beach/park cleanup events in your area.</li>
+                            <li><strong class="font-semibold">Policy Tracker:</strong> Check national and local legislation on plastic bans.</li>
+                            <li><strong class="font-semibold">Refill App:</strong> Find nearby stations to refill water bottles.</li>
+                            <li><strong class="font-semibold">Local Zero-Waste Stores:</strong> Support businesses committed to no-packaging.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-10">
+                    <button class="btn-primary" onclick="alertCustom('Remember, small changes by many people create massive change globally.')">
+                        Start Your Zero-Waste Journey
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. GALLERY / CASE STUDIES PAGE -->
+        <section id="page-gallery" class="page-transition hidden pt-10">
+            <div class="bg-white p-8 rounded-xl shadow-2xl">
+                <h2 class="text-4xl font-extrabold text-ocean-blue mb-8 border-b pb-2 text-center">
+                    Case Studies & Visual Impact
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Case Study 1: Beach Cleanup -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+                        <img src="Beach Cleanup Photo.webp" alt="Volunteers cleaning a beach" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold text-sea-green mb-2">Operation Coastal Shield</h3>
+                            <p class="text-sm text-gray-600">A weekend initiative where 50 volunteers removed over 1.5 tons of debris from a local coastline. This highlights community power.</p>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 2: Innovative Material -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+                        <img src="Algae Plastic Alternatives.jpg" alt="Bioplastic made from algae" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold text-ocean-blue mb-2">Algae-Based Packaging</h3>
+                            <p class="text-sm text-gray-600">Showcasing a startup that developed fully compostable food packaging using sustainably harvested seaweed and algae fibers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 3: Policy Change -->
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+                        <img src="Plastic Ban Sign.jpg" alt="City council meeting sign" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold text-coral-red mb-2">The Municipal Bag Ban</h3>
+                            <p class="text-sm text-gray-600">Detailed report on a small city's success after implementing a complete ban on single-use plastic bags, leading to a 70% waste reduction.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 p-6 bg-ocean-blue text-white rounded-xl text-center">
+                    <p class="text-xl font-semibold">"In the face of crisis, creativity is our greatest resource."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CONTACT / FEEDBACK PAGE (Form: Name, Email, Message) -->
+        <section id="page-contact" class="page-transition hidden pt-10">
+            <div class="bg-white p-8 rounded-xl shadow-2xl max-w-lg mx-auto">
+                <h2 class="text-4xl font-extrabold text-ocean-blue mb-6 border-b pb-2 text-center">
+                    Connect With Aethera
+                </h2>
+                <p class="text-center text-gray-600 mb-6">
+                    We value your feedback, campaign ideas, and support. Drop us a line!
+                </p>
+
+                <form id="feedbackForm" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" id="name" name="name" required
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-ocean-blue focus:border-ocean-blue">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" id="email" name="email" required
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-ocean-blue focus:border-ocean-blue">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message or Idea</label>
+                        <textarea id="message" name="message" rows="4" required
+                                  class="w-full p-3 border border-gray-300 rounded-lg focus:ring-ocean-blue focus:border-ocean-blue"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary w-full mt-4">
+                        Send Feedback
+                    </button>
+                </form>
+
+                <div id="form-message" class="mt-4 p-4 text-sm rounded-lg text-center hidden" role="alert"></div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-wave-light py-6 mt-10">
+        <div class="container mx-auto text-center px-4">
+            <p>&copy; 2025 EcoGuard Anti-Plastic Portal. | Dedicated to SDG 14 </p>
+            <div class="mt-2 space-x-4">
+                <a href="#" class="hover:text-ocean-blue transition">Privacy</a>
+                <a href="#" class="hover:text-ocean-blue transition">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        let currentPage = 'home';
+        const pages = document.querySelectorAll('.page-transition');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Function to show a custom alert message (since window.alert is forbidden)
+        function alertCustom(message) {
+            const messageBox = document.createElement('div');
+            messageBox.id = 'custom-alert';
+            messageBox.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[100]';
+            messageBox.innerHTML = `
+                <div class="bg-white p-6 rounded-xl shadow-2xl max-w-sm w-full transform transition duration-300 scale-100">
+                    <p class="text-xl font-bold text-ocean-blue mb-4">${message}</p>
+                    <button onclick="document.getElementById('custom-alert').remove()" class="btn-primary w-full">
+                        Close
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(messageBox);
+        }
+
+        // Page Navigation Logic
+        function navigateTo(pageId) {
+            if (pageId === currentPage) return;
+
+            // 1. Hide current page with transition
+            const currentSection = document.getElementById('page-' + currentPage);
+            if (currentSection) {
+                currentSection.classList.remove('page-active');
+                currentSection.style.transform = 'translateY(20px)';
+                currentSection.style.opacity = '0';
+                // Wait for transition to finish before hiding display
+                setTimeout(() => {
+                    currentSection.classList.add('hidden');
+                }, 500);
+            }
+
+            // 2. Update current page
+            currentPage = pageId;
+
+            // 3. Show new page with transition
+            const nextSection = document.getElementById('page-' + pageId);
+            if (nextSection) {
+                nextSection.classList.remove('hidden');
+                // Force reflow/repaint to ensure transition starts
+                void nextSection.offsetWidth;
+                nextSection.classList.add('page-active');
+                nextSection.style.transform = 'translateY(0)';
+                nextSection.style.opacity = '1';
+            }
+
+            // 4. Update Nav Links (Active State)
+            navLinks.forEach(link => {
+                link.classList.remove('active', 'text-ocean-blue');
+                link.classList.add('text-gray-700');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active', 'text-coral-red');
+                    link.classList.remove('text-gray-700');
+                }
+            });
+
+            // Close mobile menu if open
+            mobileMenu.classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Form Submission Logic
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formMessage = document.getElementById('form-message');
+            const name = document.getElementById('name').value;
+
+            // Simple client-side validation check
+            if (name.trim() === "") {
+                formMessage.textContent = "Please enter your name.";
+                formMessage.className = 'mt-4 p-4 text-sm rounded-lg text-red-700 bg-red-100 block';
+                return;
+            }
+
+            // Simulate form submission success
+            formMessage.textContent = `Thank you, ${name}! Your feedback has been sent to the Aethera team. We appreciate your input!`;
+            formMessage.className = 'mt-4 p-4 text-sm rounded-lg text-sea-green bg-green-100 block';
+
+            // Clear the form after a successful simulated submission
+            this.reset();
+        });
+
+        // Initialize the page on load
+        window.onload = function() {
+            navigateTo('home');
+        };
+    </script>
+
+</body>
+</html>
